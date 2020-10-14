@@ -168,7 +168,7 @@
 			<div class="gray">
 				<div class="pay-form--black">
 					<div class="pay__height-40">
-						<img src="img/icon-maestro.png" alt="">
+						<img src="img/icon-mc.png" alt="">
 					</div>
 					<input  class="pay__card-number " type="text" placeholder="0000 0000 0000 0000"><br>
 					<div  class="pay__flex">
@@ -214,7 +214,7 @@
 			<div class="gray">
 				<div class="pay-form--black">
 					<div class="pay__height-40">
-						<img src="img/icon-mc.png" alt="">
+						<img src="img/icon-maestro.png" alt="">
 					</div>
 					<input  class="pay__card-number " type="text" placeholder="0000 0000 0000 0000"><br>
 					<div  class="pay__flex">
@@ -242,5 +242,18 @@
 			<div class="pay-logo-wrapper"><img src="img/icon-tls.svg" alt=""></div>
 		</div>
 	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/card_validator.js"></script>
+	<script>
+$(document).ready(function () {
+	$('.pay-form').cardValidator({
+		cvcInput: $('input.pay__card-cvc'),
+		numberInput: $('input.pay__card-number'),
+		imageBlock: $('div.pay__height-40'),
+		submitButton: $('input.pay-form__submit'),
+		validityInput: $('input.pay__card-data')
+	});
+});
+	</script>
 </body>
 </html>

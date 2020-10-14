@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preload" href="css/fonts.css" as="style">
+	<link rel="stylesheet" href="css/fonts.css" as="style">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<title>Vega Payment System</title>
+</head>
+<body>
+	<div class="pay-container">
+		<div class="price">
+			<div class="price__cost">100.00 <span class="price__cost-valut">RUB</span></div>
+			<a href="#" class="price__btn">О счете</a>
+		</div>
+		<div class="pay-preview">
+			<span class="pay-preview__account">Выбрать аккаунт</span>
+			<span class="pay-preview__payment">Подтвердите оплату</span>
+		</div>
+		<form action="" class="pay-form">
+			<div class="pay__height-50">
+				<div class="pay-title">Подтвердите оплату</div>
+			</div>
+			<div class="gray">
+				<div class="pay-form--black">
+					<div class="pay__height-40">
+						<label class="pay__card-number">Введите номер карты</label>
+					</div>
+					<input class="pay__card-number" type="text" placeholder="0000 0000 0000 0000"><br>
+					<div  class="pay__flex">
+						<label class="pay__card-data">Действительна до</label>
+						<input class="pay__card-data" type="text" placeholder="ММ / ГГ">
+					</div>										
+				</div>
+				<div class="pay-form--gray">
+					<div  class="pay__flex">
+						<label class="pay__card-cvc">CVC-код на оборотной<br> стороне карты</label>
+						<input class="pay__card-cvc" type="password" placeholder="CVC">
+					</div>
+			</div>								
+			</div>
+			<input class="pay-form__submit" type="submit" value="Оплатить">
+		</form>
+		<a href="#" class="pay-apple">
+			<img src="img/apple-pay.svg" alt="">
+		</a>
+		<div class="pay-logo">
+			<div class="pay-logo-wrapper"><img src="img/icon-dss.svg" alt=""></div>
+			<div class="pay-logo-wrapper"><img src="img/icon-verified-visa.svg" alt=""></div>
+			<div class="pay-logo-wrapper"><img src="img/icon-accept-mir.svg" alt=""></div>
+			<div class="pay-logo-wrapper"><img src="img/icon-secure-code-master-card.svg" alt=""></div>
+			<div class="pay-logo-wrapper"><img src="img/icon-tls.svg" alt=""></div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/card_validator.js"></script>
+	<script>
+$(document).ready(function () {
+	$('.pay-form').cardValidator({
+		cvcInput: 'input.pay__card-cvc',
+		numberInput: 'input.pay__card-number',
+		imageBlock: 'div.pay__height-40',
+		submitButton: 'input.pay-form__submit',
+		validityInput: 'input.pay__card-data',
+		errorBlock: 'div.pay__height-50',
+		errorBlockDone: '<div class="pay-title">Подтвердите оплату</div>',
+		errorBlockNotDone: '<div class="pay-error">Неверный номер карты</div>',
+		cards: {
+			default: {
+				'logo': '<label class="pay__card-number" for="">Введите номер карты</label>',
+				'placeholder': '0000 0000 0000 0000'
+			},
+			maestro: {
+				'logo': '<img src="img/icon-maestro.png" alt="Maestro logo" />',
+				'placeholder': '00000000 0000000000'
+			},
+			master: {
+				'logo': '<img src="img/icon-mc.png" alt="MasterCard logo" />',
+				'placeholder': '0000 0000 0000 0000'
+			},
+			mir: {
+				'logo': '<img src="img/icon-mir.png" alt="Visa logo" />',
+				'placeholder': '0000 0000 0000 0000'
+			},
+			visa: {
+				'logo': '<img src="img/icon-visa.png" alt="Mir logo" />',
+				'placeholder': '0000 0000 0000 0000'
+			}
+		}
+	});
+});
+	</script>
+</body>
+</html>
